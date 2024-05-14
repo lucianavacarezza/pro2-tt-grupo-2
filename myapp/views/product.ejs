@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link width="" rel="shortcut icon" href="/images/borrachet.png" />
+
+	<title> Borrachet</title>
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Bootstrap Grid Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/bootstrapGrid.min.css">
+	<!-- Own Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/app.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<%- include("./partials/header.ejs") %>
+	<!-- product detail -->
+	<div class="container productsWrapper">
+		<div class="d-flex alignItemsCenter">
+			<h2 class="productsTitle"> <%= productos[0].nombreDelProducto %> </h2> 
+			<p class="productDetailDescription">
+				<a href="/products/add">Editar</a>
+			</p>
+		</div>
+		<div class="productDetail">
+			<div class="row">
+				<article class="col-12 col-lg-8 productDetailInfo">
+					<img src= <%= productos[0].imagenDelProducto %> alt="" class="productDetailImg">
+					<p class="productDetailDescription">
+						<%= productos[0].descripcion %></p>
+				</article>
+				<div class="col-12 col-lg-4">
+					<section class="comments">
+						<% for (let i = 0; i < productos[0].comentarios.length; i++) { %>
+							<article>
+								<img src= <%=productos[0].comentarios[i].imagenPerfil %> alt=""> 
+								<div class="data">
+									<p class="user">
+									<strong> <a href="profile.ejs"> <%= productos[0].comentarios[i].nombreUsuario %> </a> </strong>
+									 <%= productos[0].comentarios[i].texto %> </p>
+								</div>
+							</article>
+							<%} %>
+					</section>
+					<form class="form" action="/products" method="GET">
+						<input class="formInput" type="text" value="" placeholder="Agregar comentario">
+						<button type="submit" class="buyNowButton">AGREGAR COMENTARIO</button>
+					</form>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /product detail -->
+
+	<%- include("./partials/footerLogueado") %>
+
+</body>	
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link width="" rel="shortcut icon" href="/images/borrachet.png" />
+
+	<title> Borrachet</title>
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Bootstrap Grid Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/bootstrapGrid.min.css">
+	<!-- Own Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/app.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<%- include("./partials/headerLogueado.ejs") %>
+
+	<!-- Novedades -->
+	<div class="container productsWrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="productsTitle">Agregar productos</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+			<form action="/users/profile" method="GET">
+				<div>
+					<label for="imagenName">Imagen del producto</label>
+					<input id="imagenName" type="file" name="imagenName" value="" required> </input>
+				</div>
+				<div>
+					<label for="productName">Nombre del producto</label>
+					<input id="productName" type="text" name="productName" value="" required> </input>
+				</div>
+				<div>
+					<label for="descriptionProduct">Descripción del producto</label>
+					<input id="descriptionProduct" type="text" name="descriptionProduct" value="" required> </input>
+				</div>
+				<div>
+					<button class="botonesNaranja" type="submit">Enviar </button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<%- include("./partials/footerLogueado") %>
+
+</body>
+</html>
