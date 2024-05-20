@@ -24,7 +24,7 @@
 </head>
 <body>
 
-	<%- include("./partials/header.ejs") %>
+	<%- include("./partials/header") %>
 	<!-- product detail -->
 	<div class="container productsWrapper">
 		<div class="d-flex alignItemsCenter">
@@ -47,7 +47,7 @@
 								<img src= <%=productos[0].comentarios[i].imagenPerfil %> alt=""> 
 								<div class="data">
 									<p class="user">
-									<strong> <a href="profile.ejs"> <%= productos[0].comentarios[i].nombreUsuario %> </a> </strong>
+									<strong> <a href="/users/profile"> <%= productos[0].comentarios[i].nombreUsuario %> </a> </strong>
 									 <%= productos[0].comentarios[i].texto %> </p>
 								</div>
 							</article>
