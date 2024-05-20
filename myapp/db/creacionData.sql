@@ -1,4 +1,4 @@
--- Crear database
+--- Crear database
 -- El nombre es cualquier cosa
 CREATE DATABASE IF NOT EXISTS myapp_database;
 
@@ -16,17 +16,17 @@ CREATE TABLE IF NOT EXISTS usuarios (
     foto TEXT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    deletedAt TIMESTAMP TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP
+    deletedAt TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- Insert de data test a usuarios
-INSERT INTO usuarios (nombre, email, contrasenia, dni, fecha, foto) VALUES
-('agustina_gomez_garcia', 'agustinagg@gmail.com', '123456', '46700974','16/05/2005', 'fotoDePerfil.png')
-('pepegomez', 'pepegomez@gmail.com', 'vacablanca', '48273847', '12/10/1969', 'fotoperfil.png'),
-('lopez_nacho', 'nacholopez10@gmail.com', 'pajarorojo', '32450284' '11/05/1972', 'fotoperfil.png'),
-('nicorodriguez8', 'nicorodriguez8@gmail.com', '12354', '37294380', '11/02/1967', 'fotoperfil.png'),
-('luis_navas', 'luisnavas@gmail.com', 'recital450', '23928493', '23/03/1999', 'fotoperfil.png'),
-('briangomez', 'briangomez@gmail.com', 'hombrearania', '21643653', '24/04/1978', 'fotoperfil.png');
+INSERT INTO usuarios (id, nombre, email, contrasenia, dni, fecha, foto, createdAt, updatedAt, deletedAt) VALUES
+(default, 'agustina_gomez_garcia', 'agustinagg@gmail.com', '123456', '46700974','16/05/2005', 'fotoDePerfil.png', default, default, default),
+(default, 'pepegomez', 'pepegomez@gmail.com', 'vacablanca', '48273847', '12/10/1969', 'fotoperfil.png', default, default, default),
+(default, 'lopez_nacho', 'nacholopez10@gmail.com', 'pajarorojo', '32450284' '11/05/1972', 'fotoperfil.png', default, default, default),
+(default, 'nicorodriguez8', 'nicorodriguez8@gmail.com', '12354', '37294380', '11/02/1967', 'fotoperfil.png', default, default, default),
+(default, 'luis_navas', 'luisnavas@gmail.com', 'recital450', '23928493', '23/03/1999', 'fotoperfil.png', default, default, default),
+(default, 'briangomez', 'briangomez@gmail.com', 'hombrearania', '21643653', '24/04/1978', 'fotoperfil.png', default, default, default);
 
 -- Tabla de productos
 CREATE TABLE IF NOT EXISTS productos (
