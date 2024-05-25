@@ -1,4 +1,3 @@
-const { log } = require("debug/src/node")
 const db = require ("../db/database")
 
 const productsController = {
