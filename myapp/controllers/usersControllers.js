@@ -1,74 +1,72 @@
-const db = require ("../database/models")
+const db = require("../database/models")
 const op = db.Sequelize.Op;
 
 const usersController = {
     login: function (req, res) {
-        return res.render ("login" /* variable de db */)
+        return res.render("login" /* variable de db */)
     },
     profile: function (req, res) {
 
         let idUsuario = req.params.idUsuario;
         db.Usuario.findByPk(idUsuario)
-        
-        .then((result) => {
-            return res.render ("profile", {usuario: result})
-        }) .catch((err) => {
-            return console.log(err)
-        });
+
+            .then((result) => {
+                return res.render("profile", { usuario: result })
+            }).catch((err) => {
+                return console.log(err)
+            });
     },
     profileEdit: function (req, res) {
-        
+
         let idUsuario = req.params.idUsuario;
         db.Usuario.findByPk(idUsuario)
-        
-        .then((result) => {
 
-            return res.render ("profileEdit", {usuario: result})
-        }) .catch((err) => {
-            return console.log(err)
-        });
+            .then((result) => {
+
+                return res.render("profileEdit", { usuario: result })
+            }).catch((err) => {
+                return console.log(err)
+            });
     },
     register: function (req, res) {
         return res.render("register" /* variable de db */)
     },
     create: function (req, res) {
-        
-        let form = req.body;
-        
-        let usuario = {
-            email: form.email,
-            name: form.nombre,
-            password: form.contrasenia,
-            birthdate: form.fecha,
-            documento: form.dni,
-            fotoDePerfil: form.foto
-        }
 
+        let form = req.body;
+        let usuario ={
+            nombre:form.nombre,
+            email:form.email,
+            contrasenia:form.contrasenia,
+            dni:form.dni,
+            fecha:form.fecha,
+            foto:form.foto
+        }
         db.Usuario.create(usuario)
-        .then ((result) => {
-        return res.redirect ("/users/")
-            
-        }).catch((err) => {
+        .then((result) => {
+            return res.redirect("/users")
+        }
+        ).catch((err) => {
             return console.log(err);
-        })
-        
+        });
+
     },
     update: function (req, res) {
 
-    let form = req.body;
+        let form = req.body;
 
-    let filtrado = {
-        where: {
-            id: form.id
+        let filtrado = {
+            where: {
+                id: form.id
+            }
         }
-    }
 
-    db.Usuario.update (form, filtrado)
-    .then((result) => {
-        return res.redirect('/users/profile/id/' + form.id) /* esto está bien? no me salia de otra manera*/
-    }).catch((err) => {
-        return console.log(err);
-    })
+        db.Usuario.update(form, filtrado)
+            .then((result) => {
+                return res.redirect('/users/profile/id/' + form.id) /* esto está bien? no me salia de otra manera*/
+            }).catch((err) => {
+                return console.log(err);
+            })
 
     },
 }

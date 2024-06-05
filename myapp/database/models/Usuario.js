@@ -35,7 +35,7 @@ module.exports = function (sequelize, dataTypes) {
 
     let config = {
         tableName: "usuarios", //si el nombre de la tabla no coincide con el del modelo en plural
-        timestamps: false, //deshabilita las columnas para timestamps en este modelo
+        timestamps: true, //deshabilita las columnas para timestamps en este modelo
         underscored: false, //si los campos tienen guiones bajos
     }
 
