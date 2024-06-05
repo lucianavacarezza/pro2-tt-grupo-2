@@ -23,49 +23,36 @@
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
+	<%- //include("./partials/headerLogueado") %>
 
-	<%- include("./partials/header") %>
-	<!-- product detail -->
-
-		
+	<!-- Novedades -->
 	<div class="container productsWrapper">
-		<div class="d-flex alignItemsCenter">
-			<h2 class="productsTitle"> <%= productos.nombre %> </h2> 
-			<p class="productDetailDescription">
-				<a href="/products/edit/id/<%=productos.id %>">Editar</a>
-			</p>
-		</div>
-		<div class="productDetail">
-			<div class="row">
-				<article class="col-12 col-lg-8 productDetailInfo">
-					<img src= <%= productos.nombreArchivoImagen %> alt="" class="productDetailImg">
-					<p class="productDetailDescription">
-						<%= productos.descripcion %></p>
-				</article>
-				<div class="col-12 col-lg-4">
-					<section class="comments">
-						 <% // for (let i = 0; i < productos[0].comentarios.length; i++) { %> 
-							<article>
-								<img src= <%= //productos[0].comentarios[i].imagenPerfil %> alt=""> 
-								<div class="data">
-									<p class="user">
-									<strong> <a href="/users/profile"> <%=// productos[0].comentarios[i].nombreUsuario %> </a> </strong>
-									 <%= //productos[0].comentarios[i].texto %> </p>
-								</div>
-							</article>
-					</section>
-					<form class="form" action="/products" method="GET">
-						<input class="formInput" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buyNowButton">AGREGAR COMENTARIO</button>
-					</form>
-					<hr>
-				</div>
+		<div class="row">
+			<div class="col-12">
+				<h2 class="productsTitle">Editar productos</h2>
 			</div>
+			<!-- Show the "ultimos" products -->
+			<form action="/products/edit/id/<%=productos.id %>" method="POST">
+				<div>
+					<label for="imagenName">Imagen del producto</label>
+					<input id="imagenName" type="file" name="nombreArchivoImagen" value="<%=productos.nombreArchivoImagen%>" required> </input>
+				</div>
+				<div>
+					<label for="productName">Nombre del producto</label>
+					<input id="productName" type="text" name="nombre" value="<%=productos.nombre%>" required> </input>
+				</div>
+				<div>
+					<label for="descriptionProduct">Descripción del producto</label>
+					<input id="descriptionProduct" type="text" name="descripcion" value="<%=productos.descripcion%>" required> </input>
+				</div>
+				<div>
+					<button class="botonesNaranja" type="submit">Enviar </button>
+				</div>
+			</form>
 		</div>
 	</div>
-	<!-- /product detail -->
 
 	<%- include("./partials/footerLogueado") %>
 
-</body>	
+</body>
 </html>

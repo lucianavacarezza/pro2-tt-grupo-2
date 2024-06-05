@@ -1,9 +1,14 @@
-const db2 = require ("../database/models");
-const db = require ("../db/database")
+const db = require ("../database/models");
 // cuando hagamos el modelo usemos la referencia del ppt= const movie= db.alias delmmodelo
 const indexController = {
     index: function (req, res) {
-        return res.render ("index", {data: db.productos})
+        db.Producto.findAll()
+        .then(function(result){
+            return res.render ("index", {productos: result})
+        })
+        .catch(function (err) {
+            return console.log(err);
+        })
     }
 }
 

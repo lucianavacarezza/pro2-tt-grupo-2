@@ -33,16 +33,16 @@ CREATE TABLE IF NOT EXISTS productos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255),
     descripcion TEXT,
-    nombre_archivo_imagen TEXT,
-    id_usuario INT,
+    nombreArchivoImagen TEXT,
+    idUsuario INT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deletedAt TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+    FOREIGN KEY (idUsuario) REFERENCES usuarios(id)
 );
 
 -- Insert de registros de ejemplo en la tabla de productos
-INSERT INTO productos (nombre, descripcion, nombre_archivo_imagen, id_usuario) VALUES
+INSERT INTO productos (nombre, descripcion, nombreArchivoImagen, idUsuario) VALUES
 ('Absolut Raspberry', 'Vibrante expresión de vodka infundido con el dulce y ácido sabor de las frambuesas maduras. Su aroma fresco y afrutado anticipa una experiencia gustativa suave y equilibrada, perfecta para cócteles refrescantes o disfrutarlo solo.', 'absolutRasperri.jpg', 1),
 ('Grey Goose', 'vodka francés de renombre mundial. Destilado meticulosamente con trigo de invierno suave y agua de manantial de Gensac-la-Pallue, ofrece una experiencia excepcionalmente suave y refinada. Con su distintivo sabor limpio y delicado, es el acompañamiento perfecto para cualquier ocasión.', 'gresGoose.png', 1),
 ('Smirnoff', 'Es reconocido por su calidad y versatilidad. Destilado tres veces y filtrado diez, ofrece una pureza excepcional y un sabor suave', 'smirnoffNaranja.png', 1),
@@ -57,18 +57,18 @@ INSERT INTO productos (nombre, descripcion, nombre_archivo_imagen, id_usuario) V
 -- Tabla de comentarios
 CREATE TABLE IF NOT EXISTS comentarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_producto INT,
-    id_usuario INT,
+    idProducto INT,
+    idUsuario INT,
     texto TEXT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deletedAt TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-    FOREIGN KEY (id_producto) REFERENCES productos(id)
+    FOREIGN KEY (idUsuario) REFERENCES usuarios(id),
+    FOREIGN KEY (idProducto) REFERENCES productos(id)
 );
 
 -- Insert de registros de ejemplo en la tabla de comentarios
-INSERT INTO comentarios (id_producto, id_usuario, texto) VALUES
+INSERT INTO comentarios (idProducto, idUsuario, texto) VALUES
 (1, 1, 'Llego  rapidisimo!'),
 (1, 2, 'Una calidad inigualable'),
 (1, 3, 'La mejor bebida del mundo!'),

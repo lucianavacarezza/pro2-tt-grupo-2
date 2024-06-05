@@ -23,7 +23,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<%- include("./partials/headerLogueado") %>
+	<%- //include("./partials/headerLogueado") %>
 
 	<!-- Novedades -->
 	<div class="container productsWrapper">
@@ -32,18 +32,18 @@
 				<h2 class="productsTitle">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action="/users/profile" method="GET">
+			<form action="/products/add" method="POST">
 				<div>
 					<label for="imagenName">Imagen del producto</label>
-					<input id="imagenName" type="file" name="imagenName" value="" required> </input>
+					<input id="imagenName" type="file" name="nombreArchivoImagen" value="" required> </input>
 				</div>
 				<div>
 					<label for="productName">Nombre del producto</label>
-					<input id="productName" type="text" name="productName" value="" required> </input>
+					<input id="productName" type="text" name="nombre" value="" required> </input>
 				</div>
 				<div>
 					<label for="descriptionProduct">Descripción del producto</label>
-					<input id="descriptionProduct" type="text" name="descriptionProduct" value="" required> </input>
+					<input id="descriptionProduct" type="text" name="descripcion" value="" required> </input>
 				</div>
 				<div>
 					<button class="botonesNaranja" type="submit">Enviar </button>

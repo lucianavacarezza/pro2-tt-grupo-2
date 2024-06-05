@@ -31,29 +31,50 @@
 			<div class="col-12">
 				<h2 class="productsTitle">Resultados de búsqueda</h2>
 			</div>
-			<!-- Show the "ultimos" products.. -->
-			<% if (resultado != "No contamos con este producto") { %>
-				<div class="products">
-					<section class="productBox">
-						<a href="/products">
-							<figure class="productBoxImage">
-								<img src="<%=resultado[0].imagenDelProducto%>" alt="absolut Raspberry">
-							</figure>
-							<article class="productBoxData">
-								<h2><%= resultado[0].nombreDelProducto %></h2>
-								<p><%= resultado[0].descripcion %></p>
-								<p>Comentarios: <%=resultado[0].comentarios.length%></p>
+
+			<% if (productos.length == 0) { %>
+				<h2 class="productsTitle"> No contamos con este producto</h2>
+
+				<% } else { %>
+						<% for( let i = 0; i < productos.length; i++ ) { %>
+								
+	<div class="container productsWrapper">
+		<div class="d-flex alignItemsCenter">
+			<h2 class="productsTitle"> <%= productos[i].nombre %> </h2> 
+			<p class="productDetailDescription">
+				<a href="/products/add">Editar</a>
+			</p>
+		</div>
+		<div class="productDetail">
+			<div class="row">
+				<article class="col-12 col-lg-8 productDetailInfo">
+					<img src= <%= productos[i].nombreArchivoImagen %> alt="" class="productDetailImg">
+					<p class="productDetailDescription">
+						<%= productos[i].descripcion %></p>
+				</article>
+				<div class="col-12 col-lg-4">
+					<section class="comments">
+						 <% // for (let i = 0; i < productos[0].comentarios.length; i++) { %> 
+							<article>
+								<img src= <%= //productos[0].comentarios[i].imagenPerfil %> alt=""> 
+								<div class="data">
+									<p class="user">
+									<strong> <a href="/users/profile"> <%=// productos[0].comentarios[i].nombreUsuario %> </a> </strong>
+									 <%= //productos[0].comentarios[i].texto %> </p>
+								</div>
 							</article>
-						</a>
 					</section>
+					<form class="form" action="/products" method="GET">
+						<input class="formInput" type="text" value="" placeholder="Agregar comentario">
+						<button type="submit" class="buyNowButton">AGREGAR COMENTARIO</button>
+					</form>
+					<hr>
+				</div>
 			</div>
-			<% } else if (resultado == "No contamos con este producto") { %>
-				<h1> No contamos con ese producto</h1> <% } %>
-			
-			
-			
-			<h2 class="col-12"> 
-			</h2>
+		</div>
+	</div>
+							<% } %>
+			<% } %>
 		</div>
 	</div>
 	

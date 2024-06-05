@@ -41,14 +41,14 @@
 			<div class="products">
 				<% for (let i = 0; i < 5; i++) { %>
 					<section class="productBox">
-						<a href="/products">
+						<a href="/products/id/<%=productos[i].id%>">
 							<figure class="productBoxImage">
-								<img class="tamaños" src=" <%=data[i].imagenDelProducto%>" alt="absolut Raspberry">
+								<img class="tamaños" src=" <%=productos[i].imagenDelProducto%>" alt="absolut Raspberry">
 							</figure>
 							<article class="productBoxData">
-								<h2><%= data[i].nombreDelProducto %></h2>
-								<p><%= data[i].descripcion %></p>
-								<p>Comentarios: <%= data[i].comentarios.length %></p>
+								<h2><%= productos[i].nombreDelProducto %></h2>
+								<p><%= productos[i].descripcion %></p>
+								<p>Comentarios: <%= //productos[i].comentarios.length %></p>
 							</article>
 						</a>
 					</section>
@@ -66,16 +66,16 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class=" products ">
-				<% for (let i = 5; i < data.length; i++) {  %>
+				<% for (let i = 5; i < productos.length; i++) {  %>
 					<section class="productBox">
-						<a href="/products">
+						<a href="/products/id/<%=productos[i].id%>">
 							<figure class="productBoxImage">
-								<img  src="<%=data[i].imagenDelProducto %>" alt="cafetera moulinex">
+								<img  src="<%=productos[i].nombreArchivoImagen %>" alt="foto producto">
 							</figure>
 							<article class="productBoxData">
-								<h2><%= data[i].nombreDelProducto%></h2>
-								<p><%=data[i].descripcion %></p>
-								<p>Comentarios: <%= data[i].comentarios.length %></p>
+								<h2><%= productos[i].nombreDelProducto%></h2>
+								<p><%=productos[i].descripcion %></p>
+								<p>Comentarios: <%= // data[i].comentarios.length %></p>
 							</article>
 						</a>
 					</section>
