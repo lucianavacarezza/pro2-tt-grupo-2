@@ -8,10 +8,18 @@ const usersController = {
     profile: function (req, res) {
 
         let idUsuario = req.params.idUsuario;
+
+        /*let criterio = {
+            include: [
+                {association: "productos"}
+            ]
+        }*/
+
         db.Usuario.findByPk(idUsuario)
 
             .then((result) => {
-                return res.render("profile", { usuario: result })
+                return res.send(result)
+                return res.render("profile", { usuario: result, producto : result.productos })
             }).catch((err) => {
                 return console.log(err)
             });

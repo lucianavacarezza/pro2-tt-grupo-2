@@ -1,5 +1,3 @@
---- Crear database
--- El nombre es cualquier cosa
 CREATE DATABASE IF NOT EXISTS myapp_database;
 
 -- Usar la base
@@ -21,12 +19,12 @@ CREATE TABLE IF NOT EXISTS usuarios (
 
 -- Insert de data test a usuarios
 INSERT INTO usuarios (id, nombre, email, contrasenia, dni, fecha, foto, createdAt, updatedAt, deletedAt) VALUES
-(default, 'agustina_gomez_garcia', 'agustinagg@gmail.com', '123456', '46700974','16/05/2005', 'fotoDePerfil.png', default, default, default),
-(default, 'pepegomez', 'pepegomez@gmail.com', 'vacablanca', '48273847', '12/10/1969', 'fotoperfil.png', default, default, default),
-(default, 'lopez_nacho', 'nacholopez10@gmail.com', 'pajarorojo', '32450284' '11/05/1972', 'fotoperfil.png', default, default, default),
-(default, 'nicorodriguez8', 'nicorodriguez8@gmail.com', '12354', '37294380', '11/02/1967', 'fotoperfil.png', default, default, default),
-(default, 'luis_navas', 'luisnavas@gmail.com', 'recital450', '23928493', '23/03/1999', 'fotoperfil.png', default, default, default),
-(default, 'briangomez', 'briangomez@gmail.com', 'hombrearania', '21643653', '24/04/1978', 'fotoperfil.png', default, default, default);
+(default, 'agustina_gomez_garcia', 'agustinagg@gmail.com', '123456', '46700974','1987-12-18', 'fotoDePerfil.png', default, default, default),
+(default, 'pepegomez', 'pepegomez@gmail.com', 'vacablanca', '48273847', '1969-10-12', 'fotoperfil.png', default, default, default),
+(default, 'lopez_nacho', 'nacholopez10@gmail.com', 'pajarorojo', '32450284', '1972-05-11', 'fotoperfil.png', default, default, default),
+(default, 'nicorodriguez8', 'nicorodriguez8@gmail.com', '12354', '37294380', '1967-02-11', 'fotoperfil.png', default, default, default),
+(default, 'luis_navas', 'luisnavas@gmail.com', 'recital450', '23928493', '1999-03-23', 'fotoperfil.png', default, default, default),
+(default, 'briangomez', 'briangomez@gmail.com', 'hombrearania', '21643653', '1978-04-24', 'fotoperfil.png', default, default, default);
 
 -- Tabla de productos
 CREATE TABLE IF NOT EXISTS productos (
@@ -49,7 +47,7 @@ INSERT INTO productos (nombre, descripcion, nombreArchivoImagen, idUsuario) VALU
 ('Jagger', 'Icónica bebida espirituosa alemana, cautiva con su distintivo sabor a base de hierbas y especias', 'jagger.png', 1),
 ('Fernet', 'Emblemática bebida italiana, seduce con su inigualable amargor equilibrado por notas herbales y especiadas', 'fernet.jpg', 1),
 ('Black Label', 'Whisky escocés por excelencia de Johnnie Walker, encarna la artesanía y la tradición centenaria.', 'blackLabel.png', 1),
-('Campari', 'Aperitivo italiano icónico, cautiva con su distintivo sabor amargo y refrescante.', 'campari.jpg', 1),
+('Campari', 'Aperitivo italiano icónico, cautiva con su distintivo sabor amargo y refrescante.', 'productoscampari.jpg', 1),
 ('Bacardi', 'Ron legendario de Cuba, destaca por su suavidad y versatilidad. Elaborado con la mezcla perfecta de melaza y agua pura, ofrece un sabor equilibrado con notas sutiles de vainilla y especias.', 'bacardi.png', 1),
 ('Tanqueray Gin Tonic', 'Emblema del gin premium, deslumbra con su equilibrio entre sabores botánicos y cítricos.', 'gin.png', 1),
 ('Cosecha Tardía Vino', 'Elixir de dulzura y refinamiento, se distingue por su proceso de cosecha tardía, que concentra los azúcares naturales de las uvas.', 'vinito.webp', 1);

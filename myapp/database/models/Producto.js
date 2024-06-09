@@ -1,3 +1,5 @@
+
+
 module.exports = function (sequelize, dataTypes) {
     let alias = "Producto";
 
@@ -33,6 +35,8 @@ module.exports = function (sequelize, dataTypes) {
     }
 
     let Producto = sequelize.define(alias, cols, config);
+
+
 
     return Producto;
 }
