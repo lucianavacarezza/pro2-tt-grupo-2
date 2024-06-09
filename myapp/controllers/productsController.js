@@ -4,7 +4,13 @@ const { Op } = require("sequelize")
 const productsController = {
     product: function (req, res) {
         let idProducto = req.params.idProducto;
-        db.Producto.findByPk(idProducto)
+
+        let criterio = {
+            include: [
+                {association: "usuario"}
+            ]
+        }
+        db.Producto.findByPk(idProducto, criterio)
             .then(function (result) {
                 return res.render("product", { productos: result }); //cuando es sin la vista me trae todos pero cuando pongo la vista solo me trae uno y sin la imagen ni nada
             })
