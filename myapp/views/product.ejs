@@ -22,22 +22,23 @@
 						<%= productos.descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
+					<% for (let i = 0; i < productos.comentario.length; i++) { %> 
 					<section class="comments">
-						 <% // for (let i = 0; i < productos[0].comentarios.length; i++) { %> 
 							<article>
-								<img src= <%= //productos[0].comentarios[i].imagenPerfil %> alt=""> 
+								<img src= <%= productos.comentario[i].usuario.foto %> alt=""> 
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/users/profile"> <%=// productos[0].comentarios[i].nombreUsuario %> </a> </strong>
-									 <%= //productos[0].comentarios[i].texto %> </p>
+									<strong> <a href="/users/profile/id/<%=productos.comentario[i].usuario.id%>"> <%=productos.comentario[i].usuario.nombre %> </a> </strong>
+									 <%= productos.comentario[i].texto %> </p>
 								</div>
 							</article>
 					</section>
+					<hr>
+					<% }%>
 					<form class="form" action="/products" method="GET">
 						<input class="formInput" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buyNowButton">AGREGAR COMENTARIO</button>
 					</form>
-					<hr>
 				</div>
 			</div>
 		</div>

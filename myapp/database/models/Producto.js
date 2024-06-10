@@ -3,7 +3,7 @@ const { FOREIGNKEYS } = require("sequelize/lib/query-types");
 module.exports = function (sequelize, dataTypes) {
     let alias = "Producto";
 
-    let cols= {
+    let cols = {
         id: {
             autoIncrement: true,
             primaryKey: true,
@@ -15,7 +15,7 @@ module.exports = function (sequelize, dataTypes) {
         descripcion: {
             type: dataTypes.STRING
         },
-        nombreArchivoImagen : {
+        nombreArchivoImagen: {
             type: dataTypes.STRING
         },
         idUsuario: {
@@ -28,19 +28,25 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.DATE
         }
     }
-    let config= {
+    let config = {
         tableName: "productos", //si el nombre de la tabla no coincide con el del modelo en plural
         timestamps: false, //deshabilita las columnas para timestamps en este modelo
         underscored: false, //si los campos tienen guiones bajos
     }
 
     let Producto = sequelize.define(alias, cols, config);
-    
+
     Producto.associate = function (models) {
         Producto.belongsTo(models.Usuario, {
             as: "usuario",
             foreignKey: "idUsuario"
-        } )}
+        }),
+            Producto.hasMany(models.Comentario, {
+                as: "comentario",
+                foreignKey: "idProducto"
+            })
+    }
 
     return Producto;
 }
+

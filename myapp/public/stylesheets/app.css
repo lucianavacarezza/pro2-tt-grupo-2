@@ -459,7 +459,7 @@ label {
 .comments article{
   margin-bottom: 7.5px;
   padding-bottom: 7.5px;
-  border-bottom: 1px solid #dcdcdc;
+  
   display: flex;
   justify-content: space-between;
 }

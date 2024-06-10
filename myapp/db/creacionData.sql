@@ -20,11 +20,11 @@ CREATE TABLE IF NOT EXISTS usuarios (
 -- Insert de data test a usuarios
 INSERT INTO usuarios (id, nombre, email, contrasenia, dni, fecha, foto, createdAt, updatedAt, deletedAt) VALUES
 (default, 'agustina_gomez_garcia', 'agustinagg@gmail.com', '123456', '46700974','1987-12-18', 'fotoDePerfil.png', default, default, default),
-(default, 'pepegomez', 'pepegomez@gmail.com', 'vacablanca', '48273847', '1969-10-12', 'fotoperfil.png', default, default, default),
-(default, 'lopez_nacho', 'nacholopez10@gmail.com', 'pajarorojo', '32450284', '1972-05-11', 'fotoperfil.png', default, default, default),
-(default, 'nicorodriguez8', 'nicorodriguez8@gmail.com', '12354', '37294380', '1967-02-11', 'fotoperfil.png', default, default, default),
-(default, 'luis_navas', 'luisnavas@gmail.com', 'recital450', '23928493', '1999-03-23', 'fotoperfil.png', default, default, default),
-(default, 'briangomez', 'briangomez@gmail.com', 'hombrearania', '21643653', '1978-04-24', 'fotoperfil.png', default, default, default);
+(default, 'pepegomez', 'pepegomez@gmail.com', 'vacablanca', '48273847', '1969-10-12', 'fotoDePerfil.png', default, default, default),
+(default, 'lopez_nacho', 'nacholopez10@gmail.com', 'pajarorojo', '32450284', '1972-05-11', 'fotoDePerfil.png', default, default, default),
+(default, 'nicorodriguez8', 'nicorodriguez8@gmail.com', '12354', '37294380', '1967-02-11', 'fotoDePerfil.png', default, default, default),
+(default, 'luis_navas', 'luisnavas@gmail.com', 'recital450', '23928493', '1999-03-23', 'fotoDePerfil.png', default, default, default),
+(default, 'briangomez', 'briangomez@gmail.com', 'hombrearania', '21643653', '1978-04-24', 'fotoDePerfil.png', default, default, default);
 
 -- Tabla de productos
 CREATE TABLE IF NOT EXISTS productos (

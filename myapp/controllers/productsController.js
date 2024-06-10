@@ -7,11 +7,14 @@ const productsController = {
 
         let criterio = {
             include: [
-                {association: "usuario"}
+                {association: "usuario"},
+                {association: "comentario",
+                    include:[{association: "usuario"}]}
             ]
         }
         db.Producto.findByPk(idProducto, criterio)
             .then(function (result) {
+                //return res.send(result)
                 return res.render("product", { productos: result }); //cuando es sin la vista me trae todos pero cuando pongo la vista solo me trae uno y sin la imagen ni nada
             })
             .catch(function (err) {
