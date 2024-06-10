@@ -9,17 +9,17 @@ const usersController = {
 
         let idUsuario = req.params.idUsuario;
 
-        /*let criterio = {
+        let criterio = {
             include: [
                 {association: "productos"}
-            ]
-        }*/
+            ]}
+        
 
-        db.Usuario.findByPk(idUsuario)
+        db.Usuario.findByPk(idUsuario, criterio)
 
             .then((result) => {
-                return res.send(result)
-                return res.render("profile", { usuario: result, producto : result.productos })
+                //return res.send(result)
+                return res.render("profile", { usuario: result})
             }).catch((err) => {
                 return console.log(err)
             });

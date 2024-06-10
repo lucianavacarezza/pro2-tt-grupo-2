@@ -27,7 +27,7 @@
 			</div>
 				<div>
 					<ul class="">
-						<li> <%=productos.length%> productos</li>
+						<li> <%= usuario.productos.length%> productos</li>
 						<li>200 seguidores</li>
 						<li>300 comentarios</li>
 					</ul>
@@ -45,16 +45,16 @@
 			</div>
 			<!-- Show mis productos -->
 			<div class="products ancho">
-				<% for (let i = 0; i < productos.length; i++){%>
+				<% for (let i = 0; i < usuario.productos.length; i++){%>
 					<section class="productBox">
-						<a href="/products">
+						<a href="/products/id/<%= usuario.productos[i].id %>">
 							<figure class="productBoxImage">
-								<img src="<%=productos[i].nombreArchivoImagen%>" alt="cafetera moulinex">
+								<img src="<%=usuario.productos[i].nombreArchivoImagen%>" alt="cafetera moulinex">
 							</figure>
 							<article class="productBoxData">
-								<h2><%=productos[i].nombre %></h2>
-								<p> <%=productos[i].descripcion %></p>
-								<p>Comentarios: <%=/*usuario.productos[i].comentarios.length %></p>
+								<h2><%=usuario.productos[i].nombre %></h2>
+								<p> <%=usuario.productos[i].descripcion %></p>
+								<p>Comentarios: <%= usuario.productos.length %></p> <!-- hay que cambiarlo cuando este la relacion con comentario-->
 							</article>
 						</a>
 					</section>
@@ -64,6 +64,8 @@
 			</div>
 		</div>
 	</div>
+
+
 	<!-- /Mis productos -->
 
 	<%- include("./partials/footerLogueado") %>
