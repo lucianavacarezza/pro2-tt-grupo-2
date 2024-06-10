@@ -11,7 +11,8 @@ const usersController = {
 
         let criterio = {
             include: [
-                {association: "productos"}
+                {association: "productos"},
+                {association: "comentario"}
             ]}
         
 
