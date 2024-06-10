@@ -309,6 +309,7 @@ label {
  flex-direction: row;
  margin-left: 20px;
  margin-right: 20px;
+ flex-wrap: wrap;
 }
 .ancho {
   display: flex;

@@ -21,7 +21,6 @@ const usersController = {
         db.Usuario.findByPk(idUsuario, criterio)
 
             .then((result) => {
-                //return res.send(result)
                 return res.render("profile", { usuario: result})
             }).catch((err) => {
                 return console.log(err)

@@ -14,7 +14,7 @@ const productsController = {
         }
         db.Producto.findByPk(idProducto, criterio)
             .then(function (result) {
-                //return res.send(result)
+                // return res.send(result)
                 return res.render("product", { productos: result }); //cuando es sin la vista me trae todos pero cuando pongo la vista solo me trae uno y sin la imagen ni nada
             })
             .catch(function (err) {
@@ -72,13 +72,20 @@ const productsController = {
                     { nombre: { [Op.like]: "%" + busqueda + "%" } },
                     { descripcion: { [Op.like]: "%" + busqueda + "%" } }
                 ]
-            }
-
+            },
+            include: [
+                //{association: "comentario"},
+                {association: "comentario",
+                    include:[{association: "usuario"}]}
+            ],
+            order: [
+                ["createdAt", "DESC"]
+            ]
         }
         db.Producto.findAll(filtrado)
             .then(function (result) {
-                return res.send(result)
-                return res.render("searchResults", { productos: result });
+                //return res.send(result)
+                return res.render("searchResults", { productos: result, busqueda: busqueda });
             })
             .catch(function (err) {
                 return console.log(err);
