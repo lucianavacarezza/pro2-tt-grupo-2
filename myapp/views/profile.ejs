@@ -3,7 +3,11 @@
 	<%- include("./partials/head") %>
 <body>
 	
-	<%- include("./partials/headerLogueado") %>
+	<% if (locals.usuario != undefined) { %>
+		<%- include("./partials/headerLogueado") %>
+	<%} else { %>
+		<%- include("./partials/header") %>
+	<% } %>
 	
 	<section class="infoUsuario container productsWrapper">
 		<div class="row">
