@@ -39,7 +39,7 @@
 							</div>
 							<div class="registrarse">
 								<label for="user">Contraseña:</label>
-								<input id="contrasenia" type="password" name="contrasenia" value=" <%= locals.old !== undefined && old.contrasenia ? old.contrasenia : "" %>" required>
+								<input id="contrasenia" type="password" name="contrasenia" value="<%= locals.old !== undefined && old.contrasenia ? old.contrasenia : "" %>" required>
 								<% if (locals.errors && errors.contrasenia) { %>
 									<p class="error">
 										<%= errors.contrasenia.msg %>

@@ -101,6 +101,43 @@ const usersController = {
             })
 
     },
+    loginUser: function (req, res) {
+
+        let form = req.body
+
+        let filtro = {
+            where: [{nombre : form.nombre}]
+        }
+
+        db.Usuario.findOne(filtro)
+        .then ((result) => {
+            //return res.send(result)
+            if (result != null) {
+                req.session.usuario = result;
+                return res.redirect("/")
+                let check = bcrypt.compareSync(form.contrania, result.contrasenia);
+
+                if (check) {
+                    req.session.user = result;
+                    if (form.baja != undefined) {
+                        res.cookie("userId", result.id, {maxAge: 1000 * 60 * 35})
+                    }
+                    return res.redirect("/products");
+                } else {
+                    return res.send("error en la contraseña");
+
+                }
+
+            } else {
+                return res.send("No hay usuarios parecidos a : " + form.nombre);
+            }
+
+            
+        }).catch((err) => {
+            return console.log(err);
+        })
+        
+    }
 }
 
 module.exports = usersController

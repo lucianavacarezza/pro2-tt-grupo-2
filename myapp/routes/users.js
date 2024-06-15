@@ -36,6 +36,7 @@ let validaciones = [
 
 /* GET users listing. */
 router.get('/', usersController.login); //  se va a relacionar con login.ejs 
+router.post('/', usersController.loginUser)
 router.get('/profile/id/:idUsuario', usersController.profile); //  se va a relacionar con profile.ejs 
 router.get('/profile/edit/:idUsuario', usersController.profileEdit); //  se va a relacionar con profileEdit.ejs
 router.post('/profile/edit/:idUsuario', usersController.update)
