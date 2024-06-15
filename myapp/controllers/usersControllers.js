@@ -4,7 +4,7 @@ const db = require("../database/models")
 const op = db.Sequelize.Op;
 
 const usersController = {
-    login: function (req, res) {
+    login: function (req, res) {  
          return res.render("login" /* variable de db */)
     },
     profile: function (req, res) {
@@ -137,6 +137,11 @@ const usersController = {
             return console.log(err);
         })
         
+    },
+    logOut: function (req,res) {
+        req.session.destroy();
+        res.clearCookie("userId");
+        return res.redirect("/")
     }
 }
 
