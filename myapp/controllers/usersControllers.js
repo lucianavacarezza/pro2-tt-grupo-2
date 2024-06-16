@@ -49,7 +49,7 @@ const usersController = {
         if (errors.isEmpty()) {
             let form = req.body;
 
-            let passEncriptada = bcrypt.hashSync(form.contrasenia, 11)
+            let passEncriptada = bcrypt.hashSync(form.contrasenia, 10)
 
             let usuario = {
                 nombre: form.nombre,
@@ -114,22 +114,19 @@ const usersController = {
             //return res.send(form.contrasenia)
             if (result != null) {
                 req.session.usuario = result;
+                let check = bcrypt.compareSync(form.contrasenia, result.contrasenia)
+                //return res.send({contrasenia : form.contrasenia, hasheada: result.contrasenia, resultado : check, find: result})
 
-                //return res.send({contrasenia:form.contrasenia, hasheada:result.contrasenia })
-                
-                //let check = bcrypt.compareSync(form.contrasenia, result.contrasenia)
-                //return res.send(result)
-
-                //if (check) {
-                  //  req.session.usuario = result;
+                if (check) {
+                    req.session.usuario = result;
                     if (form.baja != undefined) {
                         res.cookie("userId", result.id, {maxAge: 1000 * 60 * 35})
                     }
                     return res.redirect("/")
-                //} else {
+                } else {
                     return res.send("error en la contraseña");
 
-                //}
+                }
 
             } else {
                 return res.send("No hay usuarios parecidos a : " + form.nombre);
