@@ -17,15 +17,20 @@
 			<div class="data-container col-6">
 				<div class="d-flex alignItemsCenter perfiles ">
 					<h1 class="mainTitle"> <%= usuario.nombre %>
-						<a href="/users/profile/edit/<%=usuario.id%>">
-							<i class="fas fa-cog"></i>
-						</a>
-					</h1>
+						<% if (sesion.id == usuario.id) { %>
+							<a href="/users/profile/edit/<%=sesion.id%>">
+								<i class="fas fa-cog"></i>
+							</a>
+						</h1>
+						<% } else {%>
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
+					<% } %>
 				</div>
-				<div >
-					<a href="/users/profile/edit/<%=usuario.id%>"> <button class="botonesNaranja" type="submit"> Editar perfil</button> </a>
-			</div>
+				<% if (locals.usuario.id == usuario.id) { %>
+					<div >
+						<a href="/users/profile/edit/<%=sesion.id%>"> <button class="botonesNaranja" type="submit"> Editar perfil</button> </a>
+				</div>
+				<% } %>
 			<div>
 				<i><%= usuario.email %></i>
 			</div>

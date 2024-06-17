@@ -90,6 +90,28 @@ const productsController = {
             .catch(function (err) {
                 return console.log(err);
             })
+    },
+    createComentario: function (req, res) {
+        let form = req.body
+
+        let comentario = {
+            idProducto : form.idProducto,
+            idUsuario: form.idUsuario,
+            texto: form.texto
+        }
+        /*let criterio = {
+            include: [
+                {association: "usuario"}]}*/
+
+        db.Comentario.create(comentario)
+            .then(function (result) {
+                //return res.send(result)
+                return res.redirect('/products/id/' + comentario.idProducto)
+            }).catch(function (err) {
+                return console.log(err);
+            })
+
+        
     }
 }
 

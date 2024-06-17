@@ -23,7 +23,7 @@ const usersController = {
         db.Usuario.findByPk(idUsuario, criterio)
 
             .then((result) => {
-                return res.render("profile", { usuario: result })
+                return res.render("profile", { usuario: result, sesion: res.locals.usuario })
             }).catch((err) => {
                 return console.log(err)
             });
@@ -35,7 +35,7 @@ const usersController = {
 
             .then((result) => {
 
-                return res.render("profileEdit", { usuario: result })
+                return res.render("profileEdit", { usuario: result, sesion: res.locals.usuario })
             }).catch((err) => {
                 return console.log(err)
             });
@@ -113,7 +113,6 @@ const usersController = {
         .then ((result) => {
             //return res.send(form.contrasenia)
             if (result != null) {
-                req.session.usuario = result;
                 let check = bcrypt.compareSync(form.contrasenia, result.contrasenia)
                 //return res.send({contrasenia : form.contrasenia, hasheada: result.contrasenia, resultado : check, find: result})
 

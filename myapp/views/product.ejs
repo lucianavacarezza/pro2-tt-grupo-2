@@ -40,10 +40,16 @@
 					</section>
 					<hr>
 					<% }%>
-					<form class="form" action="/products" method="GET">
-						<input class="formInput" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buyNowButton">AGREGAR COMENTARIO</button>
-					</form>
+					<% if (locals.usuario != undefined) { %>
+						<form class="form" action="/products/id/<%= productos.id %>" method="POST">
+							<input type="hidden" name="idUsuario" value="<%= locals.usuario.id %>">
+							<input type="hidden" name="idProducto" value="<%= productos.id %>">
+							<input class="formInput" type="text" name= "texto" value="" placeholder="Agregar comentario">
+							<button type="submit" class="buyNowButton">AGREGAR COMENTARIO</button>
+						</form>
+					<% } else {%>
+						<p> Debe estar logueado para comentar</p>
+						<% } %>
 				</div>
 			</div>
 		</div>
