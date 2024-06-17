@@ -41,7 +41,7 @@ const usersController = {
             });
     },
     register: function (req, res) {
-        return res.render("register" /* variable de db */)
+        return res.render("register", {sesion: res.locals.usuario})
     },
     create: function (req, res) {
 

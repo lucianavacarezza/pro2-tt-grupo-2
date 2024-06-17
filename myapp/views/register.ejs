@@ -48,15 +48,15 @@
 							</div>
 							<div class="registrarse">
 								<label for="birthdate">Fecha de nacimiento:</label>
-								<input id="fecha" type="date" name="fecha" value=" <%= locals.old !== undefined && old.fecha ? old.fecha : "" %>" required>
+								<input id="fecha" type="date" name="fecha" value=" <%= locals.old !== undefined && old.fecha ? old.fecha : "" %>">
 							</div>
 							<div class="registrarse">
 								<label for="doc">Documento:</label>
-								<input id="dni" type="number" name="dni" value=" <%= locals.old !== undefined && old.dni ? old.dni : "" %>" required>
+								<input id="dni" type="number" name="dni" value=" <%= locals.old !== undefined && old.dni ? old.dni : "" %>" >
 							</div>
 							<div class="registrarse">
 								<label for="picture">Foto de perfil:</label>
-								<input id="foto" type="text" name="foto" value=" <%= locals.old !== undefined && old.foto ? old.foto : "" %>">
+								<input id="foto" type="text" name="foto" value="<%= locals.old !== undefined && old.foto ? old.foto:""%>">
 								<% if (locals.errors && errors.foto) { %>
 									<p class="error">
 										<%= errors.foto.msg %>
