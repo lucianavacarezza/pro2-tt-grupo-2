@@ -42,6 +42,6 @@ router.get('/profile/edit/:idUsuario', usersController.profileEdit); //  se va a
 router.post('/profile/edit/:idUsuario', usersController.update)
 router.get('/register', usersController.register); //  se va a relacionar con register.ejs 
 router.post('/register', validaciones, usersController.create);
-
+router.post('/logout', usersController.logOut);
 
 module.exports = router;
