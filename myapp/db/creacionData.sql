@@ -47,7 +47,7 @@ INSERT INTO productos (nombre, descripcion, nombreArchivoImagen, idUsuario) VALU
 ('Jagger', 'Icónica bebida espirituosa alemana, cautiva con su distintivo sabor a base de hierbas y especias', 'jagger.png', 1),
 ('Fernet', 'Emblemática bebida italiana, seduce con su inigualable amargor equilibrado por notas herbales y especiadas', 'fernet.jpg', 1),
 ('Black Label', 'Whisky escocés por excelencia de Johnnie Walker, encarna la artesanía y la tradición centenaria.', 'blackLabel.png', 1),
-('Campari', 'Aperitivo italiano icónico, cautiva con su distintivo sabor amargo y refrescante.', 'productoscampari.jpg', 1),
+('Campari', 'Aperitivo italiano icónico, cautiva con su distintivo sabor amargo y refrescante.', 'campari.jpg', 1),
 ('Bacardi', 'Ron legendario de Cuba, destaca por su suavidad y versatilidad. Elaborado con la mezcla perfecta de melaza y agua pura, ofrece un sabor equilibrado con notas sutiles de vainilla y especias.', 'bacardi.png', 1),
 ('Tanqueray Gin Tonic', 'Emblema del gin premium, deslumbra con su equilibrio entre sabores botánicos y cítricos.', 'gin.png', 1),
 ('Cosecha Tardía Vino', 'Elixir de dulzura y refinamiento, se distingue por su proceso de cosecha tardía, que concentra los azúcares naturales de las uvas.', 'vinito.webp', 1);

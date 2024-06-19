@@ -22,7 +22,7 @@
 			<strong> <a href="/users/profile/id/<%= productos.usuario.id %>"><%= productos.usuario.nombre %> </a></strong>
 			<div class="row">
 				<article class="col-12 col-lg-8 productDetailInfo">
-					<img src= <%= productos.nombreArchivoImagen %> alt="" class="productDetailImg">
+					<img src= "/images/products/<%= productos.nombreArchivoImagen %>" alt="" class="productDetailImg">
 					<p class="productDetailDescription">
 						<%= productos.descripcion %></p>
 				</article>
@@ -30,7 +30,7 @@
 					<% for (let i = 0; i < productos.comentario.length; i++) { %> 
 					<section class="comments">
 							<article>
-								<img src= <%= productos.comentario[i].usuario.foto %> alt=""> 
+								<img src= "/images/users/<%= productos.comentario[i].usuario.foto %>" alt=""> 
 								<div class="data">
 									<p class="user">
 									<strong> <a href="/users/profile/id/<%=productos.comentario[i].usuario.id%>"> <%=productos.comentario[i].usuario.nombre %> </a> </strong>
