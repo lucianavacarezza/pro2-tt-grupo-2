@@ -4,7 +4,7 @@ const indexController = {
     index: function (req, res) {
         db.Producto.findAll()
         .then(function(result){
-            return res.render ("index", {productos: result})
+            return res.render ("index", {productos: result , sesion: res.locals.usuario})
         })
         .catch(function (err) {
             return console.log(err);

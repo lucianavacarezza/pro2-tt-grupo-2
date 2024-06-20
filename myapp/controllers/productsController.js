@@ -15,14 +15,14 @@ const productsController = {
         db.Producto.findByPk(idProducto, criterio)
             .then(function (result) {
                 // return res.send(result)
-                return res.render("product", { productos: result }); //cuando es sin la vista me trae todos pero cuando pongo la vista solo me trae uno y sin la imagen ni nada
+                return res.render("product",  { productos: result , sesion: res.locals.usuario }); 
             })
             .catch(function (err) {
                 return console.log(err);
             })
     },
     add: function (req, res) {
-        return res.render("productAdd", /**/)
+        return res.render("productAdd",  {sesion: res.locals.usuario})
     },
     create: function (req, res) {
         let form = req.body;
@@ -43,7 +43,7 @@ const productsController = {
         let idProducto = req.params.idProducto;
         db.Producto.findByPk(idProducto)
             .then(function (result) {
-                return res.render("productEdit", { productos: result }); //cuando es sin la vista me trae todos pero cuando pongo la vista solo me trae uno y sin la imagen ni nada
+                return res.render("productEdit", { productos: result , sesion: res.locals.usuario}); 
             })
             .catch(function (err) {
                 return console.log(err);
@@ -58,7 +58,7 @@ const productsController = {
         }
         db.Producto.update(producto)
             .then(function (result) {
-                return res.redirect("/")
+                return res.redirect("/", {sesion: res.locals.usuario})
             })
             .catch(function (err) {
                 return console.log(err);
@@ -85,7 +85,7 @@ const productsController = {
         db.Producto.findAll(filtrado)
             .then(function (result) {
                 //return res.send(result)
-                return res.render("searchResults", { productos: result, busqueda: busqueda });
+                return res.render("searchResults", { productos: result, busqueda: busqueda , sesion: res.locals.usuario });
             })
             .catch(function (err) {
                 return console.log(err);
@@ -106,7 +106,7 @@ const productsController = {
         db.Comentario.create(comentario)
             .then(function (result) {
                 //return res.send(result)
-                return res.redirect('/products/id/' + comentario.idProducto)
+                return res.redirect('/products/id/' + comentario.idProducto,  {sesion: res.locals.usuario})
             }).catch(function (err) {
                 return console.log(err);
             })

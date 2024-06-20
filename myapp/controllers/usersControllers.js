@@ -5,7 +5,7 @@ const op = db.Sequelize.Op;
 
 const usersController = {
     login: function (req, res) {  
-         return res.render("login" /* variable de db */)
+         return res.render("login" , {sesion: res.locals.usuario})
     },
     profile: function (req, res) {
 
@@ -23,7 +23,7 @@ const usersController = {
         db.Usuario.findByPk(idUsuario, criterio)
 
             .then((result) => {
-                return res.render("profile", { usuario: result, sesion: res.locals.usuario })
+                return res.render("profile", { usuario: result , sesion: res.locals.usuario })
             }).catch((err) => {
                 return console.log(err)
             });
