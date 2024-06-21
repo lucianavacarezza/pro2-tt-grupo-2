@@ -2,7 +2,16 @@ const db = require ("../database/models");
 // cuando hagamos el modelo usemos la referencia del ppt= const movie= db.alias delmmodelo
 const indexController = {
     index: function (req, res) {
-        db.Producto.findAll()
+        let filtrado = {
+            /* include: [
+                {association: "comentario",
+                    include:[{association: "usuario"}]}
+            ],*/
+            order: [
+                ["createdAt", "DESC"]
+            ]
+        }
+        db.Producto.findAll(filtrado)
         .then(function(result){
             return res.render ("index", {productos: result , sesion: res.locals.usuario})
         })

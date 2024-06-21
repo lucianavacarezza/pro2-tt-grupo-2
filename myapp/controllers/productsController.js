@@ -14,7 +14,7 @@ const productsController = {
         }
         db.Producto.findByPk(idProducto, criterio)
             .then(function (result) {
-                // return res.send(result)
+                // return res.send(res.locals.usuario)
                 return res.render("product",  { productos: result , sesion: res.locals.usuario }); 
             })
             .catch(function (err) {
