@@ -112,7 +112,7 @@ const productsController = {
         db.Comentario.create(comentario)
             .then(function (result) {
                 //return res.send(result)
-                return res.redirect('/products/id/' + comentario.idProducto,  {sesion: res.locals.usuario})
+                return res.redirect('/products/id/' + comentario.idProducto)
             }).catch(function (err) {
                 return console.log(err);
             })
