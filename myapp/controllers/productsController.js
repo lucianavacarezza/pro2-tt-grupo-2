@@ -10,11 +10,20 @@ const productsController = {
                 {association: "usuario"},
                 {association: "comentario",
                     include:[{association: "usuario"}]}
+            ],
+            order: [
+                ["createdAt", "DESC"]
             ]
         }
+
+        /*let criterioComentario = {
+            include: [ ]
+        }*/
+
         db.Producto.findByPk(idProducto, criterio)
             .then(function (result) {
                 //return res.send({sesion: res.locals.usuario , result: result})
+                // return res.send(res.locals.usuario)
                 return res.render("product",  { productos: result , sesion: res.locals.usuario }); 
             })
             .catch(function (err) {
@@ -101,14 +110,12 @@ const productsController = {
             idUsuario: form.idUsuario,
             texto: form.texto
         }
-        /*let criterio = {
-            include: [
-                {association: "usuario"}]}*/
+
 
         db.Comentario.create(comentario)
             .then(function (result) {
                 //return res.send(result)
-                return res.redirect('/products/id/' + comentario.idProducto /*, {sesion: res.locals.usuario} */)
+                return res.redirect('/products/id/' + comentario.idProducto)
             }).catch(function (err) {
                 return console.log(err);
             })

@@ -15,7 +15,11 @@
 		<div class="d-flex alignItemsCenter">
 			<h2 class="productsTitle"> <%= productos.nombre %> </h2> 
 			<p class="productDetailDescription">
+<<<<<<< HEAD
 				<% if (sesion != undefined && sesion.id == productos.usuario.id) {%>
+=======
+				<% if (sesion.id == usuario.id) {%>
+>>>>>>> afb54eb6601ef95b50ae098253f47f1474c959a6
 					<a href="/products/edit/id/<%=productos.id %>">Editar</a>
 				<%}%> 
 			</p>
