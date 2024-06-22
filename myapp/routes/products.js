@@ -9,7 +9,6 @@ router.get('/add', productsController.add ); //  se va a relacionar con productA
 router.post('/add', productsController.create);
 router.get('/edit/id/:idProducto', productsController.edit);
 router.post('/edit/id/:idProducto', productsController.update);
-router
 router.get ('/results', productsController.results );
 
 

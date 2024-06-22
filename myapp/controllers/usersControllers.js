@@ -106,7 +106,7 @@ const usersController = {
         let form = req.body
 
         let filtro = {
-            where: [{nombre : form.nombre}]
+            where: [{email : form.email}]
         }
 
         db.Usuario.findOne(filtro)
@@ -120,6 +120,8 @@ const usersController = {
                     req.session.usuario = result;
                     if (form.baja != undefined) {
                         res.cookie("userId", result.id, {maxAge: 1000 * 60 * 35})
+                    } else { 
+                        res.session = result
                     }
                     return res.redirect("/")
                 } else {
@@ -128,7 +130,7 @@ const usersController = {
                 }
 
             } else {
-                return res.send("No hay usuarios parecidos a : " + form.nombre);
+                return res.send("No hay mails parecidos a : " + form.email);
             }
 
             
