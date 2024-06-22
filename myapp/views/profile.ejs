@@ -12,7 +12,7 @@
 	<section class="infoUsuario container productsWrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2 perfiles">
-				<img src= "<%=usuario.foto%>" alt="foto de perfil" class="fotoPerfil"> 
+				<img src= "/images/users/<%=usuario.foto%>" alt="foto de perfil" class="fotoPerfil"> 
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex alignItemsCenter perfiles ">
@@ -26,7 +26,7 @@
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 					<% } %>
 				</div>
-				<% if (locals.usuario.id == usuario.id) { %>
+				<% if (locals.usuario.id == usuario.id && locals.usuario.id == usuario.nombre ) { %>
 					<div >
 						<a href="/users/profile/edit/<%=sesion.id%>"> <button class="botonesNaranja" type="submit"> Editar perfil</button> </a>
 				</div>
@@ -58,7 +58,7 @@
 					<section class="productBox">
 						<a href="/products/id/<%= usuario.productos[i].id %>">
 							<figure class="productBoxImage">
-								<img src="/images/products/ <%=usuario.productos[i].nombreArchivoImagen%>" alt="cafetera moulinex">
+								<img src="/images/products/<%=usuario.productos[i].nombreArchivoImagen%>" alt="cafetera moulinex">
 							</figure>
 							<article class="productBoxData">
 								<h2><%=usuario.productos[i].nombre %></h2>
