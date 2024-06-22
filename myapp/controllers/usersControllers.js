@@ -23,6 +23,7 @@ const usersController = {
         db.Usuario.findByPk(idUsuario, criterio)
 
             .then((result) => {
+               // return res.send( { usuario: result , sesion: res.locals.usuario })
                 return res.render("profile", { usuario: result , sesion: res.locals.usuario })
             }).catch((err) => {
                 return console.log(err)

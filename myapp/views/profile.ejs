@@ -3,7 +3,7 @@
 	<%- include("./partials/head") %>
 <body>
 	
-	<% if (locals.usuario != undefined) { %>
+	<% if (sesion != undefined) { %>
 		<%- include("./partials/headerLogueado") %>
 	<%} else { %>
 		<%- include("./partials/header") %>
@@ -17,20 +17,18 @@
 			<div class="data-container col-6">
 				<div class="d-flex alignItemsCenter perfiles ">
 					<h1 class="mainTitle"> <%= usuario.nombre %>
-						<% if (sesion.id == usuario.id) { %>
+						<% if (sesion != undefined && sesion.id == usuario.id) { %>
 							<a href="/users/profile/edit/<%=sesion.id%>">
-								<i class="fas fa-cog"></i>
+								<i class="fas fa-cog"></i>								
 							</a>
+							<div >
+								<a href="/users/profile/edit/<%=sesion.id%>"> <button class="botonesNaranja" type="submit"> Editar perfil</button> </a>
+						</div>
 						</h1>
 						<% } else {%>
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 					<% } %>
 				</div>
-				<% if (locals.usuario.id == usuario.id && locals.usuario.id == usuario.nombre ) { %>
-					<div >
-						<a href="/users/profile/edit/<%=sesion.id%>"> <button class="botonesNaranja" type="submit"> Editar perfil</button> </a>
-				</div>
-				<% } %>
 			<div>
 				<i><%= usuario.email %></i>
 			</div>
