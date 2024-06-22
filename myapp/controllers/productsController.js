@@ -14,7 +14,7 @@ const productsController = {
         }
         db.Producto.findByPk(idProducto, criterio)
             .then(function (result) {
-                // return res.send(res.locals.usuario)
+                return res.send({sesion: res.locals.usuario , result: result})
                 return res.render("product",  { productos: result , sesion: res.locals.usuario }); 
             })
             .catch(function (err) {
@@ -106,7 +106,7 @@ const productsController = {
         db.Comentario.create(comentario)
             .then(function (result) {
                 //return res.send(result)
-                return res.redirect('/products/id/' + comentario.idProducto,  {sesion: res.locals.usuario})
+                return res.redirect('/products/id/' + comentario.idProducto /*, {sesion: res.locals.usuario} */)
             }).catch(function (err) {
                 return console.log(err);
             })
