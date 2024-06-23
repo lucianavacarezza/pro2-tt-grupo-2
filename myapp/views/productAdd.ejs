@@ -18,19 +18,28 @@
 			<form action="/products/add" method="POST">
 				<div>
 					<label for="imagenName">Imagen del producto</label>
-					<input id="imagenName" type="file" name="nombreArchivoImagen" value="" required> </input>
+					<input id="imagenName" type="file" name="nombreArchivoImagen" value="" > </input>
+					<% if (locals.errors && errors.nombreArchivoImagen) { %>
+						<p class="error"> <%=errors.nombreArchivoImagen.msg%></p>
+					<% } %>
 				</div>
 				<div>
 					<label for="productName">Nombre del producto</label>
-					<input id="productName" type="text" name="nombre" value="" required> </input>
+					<input id="productName" type="text" name="nombre" value="" > </input>
+					<% if (locals.errors && errors.nombre) { %>
+						<p class="error"> <%=errors.nombre.msg%></p>
+					<% } %>
 				</div>
 				<div>
 					<label for="descriptionProduct">Descripción del producto</label>
-					<input id="descriptionProduct" type="text" name="descripcion" value="" required> </input>
+					<input id="descriptionProduct" type="text" name="descripcion" value="" > </input>
+					<% if (locals.errors && errors.descripcion) { %>
+						<p class="error"> <%=errors.descripcion.msg%></p>
+					<% } %>
 				</div>
 				<div>
 					 <!-- Campo oculto para el ID del usuario -->
-					 <input type="hidden" name="idUsuario" value="<%= sesion.id%>">
+					 <input type="hidden" name="idUsuario" value="<%= //sesion.id%>">
 				</div>
 				<div>
 					<button class="botonesNaranja" type="submit">Enviar </button>

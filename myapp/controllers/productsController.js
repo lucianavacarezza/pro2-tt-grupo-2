@@ -1,5 +1,6 @@
 const db = require("../database/models")
 const { Op } = require("sequelize")
+const { validationResult } = require("express-validator")
 
 const productsController = {
     product: function (req, res) {
@@ -16,14 +17,9 @@ const productsController = {
             ]
         }
 
-        /*let criterioComentario = {
-            include: [ ]
-        }*/
-
         db.Producto.findByPk(idProducto, criterio)
             .then(function (result) {
-                //return res.send({sesion: res.locals.usuario , result: result})
-                // return res.send(res.locals.usuario)
+                //return res.send(result)
                 return res.render("product",  { productos: result , sesion: res.locals.usuario }); 
             })
             .catch(function (err) {
@@ -34,7 +30,9 @@ const productsController = {
         return res.render("productAdd",  {sesion: res.locals.usuario})
     },
     create: function (req, res) {
-        let form = req.body;
+        let errors= validationResult(req)
+        if (errors.isEmpty()) {
+            let form = req.body;
         let producto = {
             nombreArchivoImagen: form.nombreArchivoImagen,
             nombre: form.nombre,
@@ -49,16 +47,50 @@ const productsController = {
             .catch(function (err) {
                 return console.log(err);
             })
+        } else {
+            //return res.send(errors.mapped())
+            return res.render("productAdd", {
+                errors: errors.mapped(),
+                old: req.body
+            })
+        }
+        
     },
     edit: function (req, res) {
-        let idProducto = req.params.idProducto;
-        db.Producto.findByPk(idProducto)
-            .then(function (result) {
-                return res.render("productEdit", { productos: result , sesion: res.locals.usuario}); 
+        let errors= validationResult(req)
+        if (errors.isEmpty()) {
+            let idProducto = req.params.idProducto;
+            db.Producto.findByPk(idProducto)
+                .then(function (result) {
+                    //return res.send(result)
+                    return res.render("productEdit", { productos: result , sesion: res.locals.usuario}); 
+                })
+                .catch(function (err) {
+                    return console.log(err);
+                })
+        }else{
+            return res.render("productEdit", {
+                errors: errors.mapped(),
+                old: req.body
             })
-            .catch(function (err) {
-                return console.log(err);
-            })
+        }
+       
+    },
+    delete: function (req, res) {
+        let deleteProduct= req.params.id;
+    
+        db.Producto.delete({
+            where: [
+                {id: deleteProduct}
+            ]
+        })
+        .then(function (req, res) {
+            return res.redirect ("/", {sesion: res.locals.usuario});
+        })
+        .catch(function (err) {
+            return console.log(err);
+        })
+
     },
     update: function (req, res) {
         let form = req.body;

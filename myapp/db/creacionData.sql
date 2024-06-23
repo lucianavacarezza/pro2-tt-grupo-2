@@ -45,12 +45,12 @@ INSERT INTO productos (nombre, descripcion, nombreArchivoImagen, idUsuario) VALU
 ('Grey Goose', 'vodka francés de renombre mundial. Destilado meticulosamente con trigo de invierno suave y agua de manantial de Gensac-la-Pallue, ofrece una experiencia excepcionalmente suave y refinada. Con su distintivo sabor limpio y delicado, es el acompañamiento perfecto para cualquier ocasión.', 'gresGoose.png', 1),
 ('Smirnoff', 'Es reconocido por su calidad y versatilidad. Destilado tres veces y filtrado diez, ofrece una pureza excepcional y un sabor suave', 'smirnoffNaranja.png', 1),
 ('Jagger', 'Icónica bebida espirituosa alemana, cautiva con su distintivo sabor a base de hierbas y especias', 'jagger.png', 1),
-('Fernet', 'Emblemática bebida italiana, seduce con su inigualable amargor equilibrado por notas herbales y especiadas', 'fernet.jpg', 1),
-('Black Label', 'Whisky escocés por excelencia de Johnnie Walker, encarna la artesanía y la tradición centenaria.', 'blackLabel.png', 1),
-('Campari', 'Aperitivo italiano icónico, cautiva con su distintivo sabor amargo y refrescante.', 'campari.jpg', 1),
-('Bacardi', 'Ron legendario de Cuba, destaca por su suavidad y versatilidad. Elaborado con la mezcla perfecta de melaza y agua pura, ofrece un sabor equilibrado con notas sutiles de vainilla y especias.', 'bacardi.png', 1),
-('Tanqueray Gin Tonic', 'Emblema del gin premium, deslumbra con su equilibrio entre sabores botánicos y cítricos.', 'gin.png', 1),
-('Cosecha Tardía Vino', 'Elixir de dulzura y refinamiento, se distingue por su proceso de cosecha tardía, que concentra los azúcares naturales de las uvas.', 'vinito.webp', 1);
+('Fernet', 'Emblemática bebida italiana, seduce con su inigualable amargor equilibrado por notas herbales y especiadas', 'fernet.jpg', 2),
+('Black Label', 'Whisky escocés por excelencia de Johnnie Walker, encarna la artesanía y la tradición centenaria.', 'blackLabel.png', 2),
+('Campari', 'Aperitivo italiano icónico, cautiva con su distintivo sabor amargo y refrescante.', 'campari.jpg', 3),
+('Bacardi', 'Ron legendario de Cuba, destaca por su suavidad y versatilidad. Elaborado con la mezcla perfecta de melaza y agua pura, ofrece un sabor equilibrado con notas sutiles de vainilla y especias.', 'bacardi.png', 4),
+('Tanqueray Gin Tonic', 'Emblema del gin premium, deslumbra con su equilibrio entre sabores botánicos y cítricos.', 'gin.png', 5),
+('Cosecha Tardía Vino', 'Elixir de dulzura y refinamiento, se distingue por su proceso de cosecha tardía, que concentra los azúcares naturales de las uvas.', 'vinito.webp', 5);
 
 -- Tabla de comentarios
 CREATE TABLE IF NOT EXISTS comentarios (

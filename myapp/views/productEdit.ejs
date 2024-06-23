@@ -17,15 +17,24 @@
 			<form action="/products/edit/id/<%=productos.id %>" method="POST">
 				<div>
 					<label for="imagenName">Imagen del producto</label>
-					<input id="imagenName" type="file" name="nombreArchivoImagen" value="<%=productos.nombreArchivoImagen%>" required> </input>
+					<input id="imagenName" type="file" name="nombreArchivoImagen" value="<%=productos.nombreArchivoImagen%>" > </input>
+					<% if (locals.errors && errors.nombreArchivoImagen) { %>
+						<p class="error"> <%=errors.nombreArchivoImagen.msg%></p>
+					<% } %>
 				</div>
 				<div>
 					<label for="productName">Nombre del producto</label>
-					<input id="productName" type="text" name="nombre" value="<%=productos.nombre%>" required> </input>
+					<input id="productName" type="text" name="nombre" value="<%=productos.nombre%>" > </input>
+					<% if (locals.errors && errors.nombre) { %>
+						<p class="error"> <%=errors.nombre.msg%></p>
+					<% } %>
 				</div>
 				<div>
 					<label for="descriptionProduct">Descripción del producto</label>
-					<input id="descriptionProduct" type="text" name="descripcion" value="<%=productos.descripcion%>" required> </input>
+					<input id="descriptionProduct" type="text" name="descripcion" value="<%=productos.descripcion%>" > </input>
+					<% if (locals.errors && errors.descripcion) { %>
+						<p class="error"> <%=errors.descripcion.msg%></p>
+					<% } %>
 				</div>
 				<div>
 					<button class="botonesNaranja" type="submit">Enviar </button>
