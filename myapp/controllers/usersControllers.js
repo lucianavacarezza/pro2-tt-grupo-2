@@ -35,7 +35,7 @@ const usersController = {
         db.Usuario.findByPk(idUsuario)
 
             .then((result) => {
-
+                //return res.send({usuario: result, sesion: res.locals.usuario})
                 return res.render("profileEdit", { usuario: result, sesion: res.locals.usuario })
             }).catch((err) => {
                 return console.log(err)
@@ -77,16 +77,33 @@ const usersController = {
             //return res.send(errors.mapped())
             return res.render("register", {
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                usuario: req.session.usuario
             })
         }
-
-
-
     },
     update: function (req, res) {
 
-        let form = req.body;
+        let errors = validationResult(req)
+
+        if (errors.isEmpty()) {
+            let form = req.body;
+        
+        if (!form.contrasenia || form.contrasenia == "") {
+            passEncriptada = form.contraseniaVieja
+        } else {
+            passEncriptada = bcrypt.hashSync(form.contrasenia, 10)
+        }
+
+        let update = {
+            id: form.id,
+            email: form.email,
+            nombre: form.nombre,
+            contrasenia: passEncriptada,
+            fecha: form.fecha,
+            dni: form.dni,
+            foto: form.foto
+        }
 
         let filtrado = {
             where: {
@@ -94,13 +111,20 @@ const usersController = {
             }
         }
 
-        db.Usuario.update(form, filtrado)
+        db.Usuario.update(update, filtrado)
             .then((result) => {
+                res.locals.usuario = update
                 return res.redirect('/users/profile/id/' + form.id) /* esto está bien? no me salia de otra manera*/
             }).catch((err) => {
                 return console.log(err);
             })
-
+        } else {
+            //return res.send ({ sesion: req.session.usuario, erorres: errors.mapped()})
+            return res.render("profileEdit", {
+                errors: errors.mapped(),
+                old: req.body
+            })
+        }
     },
     loginUser: function (req, res) {
 

@@ -9,49 +9,83 @@
 		<%- include("./partials/header") %>
 	<% } %>
 
+	<% if (locals.usuario.id == usuario.id) { %>
+		<div class="container productsWrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="productsTitle">Editar mi perfil</h2>
+				</div>
+				<!-- Show the "ultimos" products ..-->
+				<h2 class="col-12">
+					<form action="/users/profile/edit/<%=usuario.id%>" method="POST">
 	
-	<div class="container productsWrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="productsTitle">Editar mi perfil</h2>
+						<input type="hidden" name="id" value="<%= usuario.id %>">
+						<div class="registrarse">
+							<label for="email">Email:</label>
+							<input id="email" type="email" name="email" value="<%= usuario.email %>" required>
+							<% if (locals.errors && errors.email) { %>
+								<p class="error">
+									<%= errors.email.msg %>
+								</p>
+								<% } %>
+						</div>
+						<div class="registrarse">
+							<label for="user">Usuario:</label>
+							<input id="user" type="text" name="nombre" value="<%= usuario.nombre%>" required>
+							<% if (locals.errors && errors.nombre) { %>
+								<p class="error">
+									<%= errors.nombre.msg %>
+								</p>
+								<% } %>
+						</div>
+						<div class="registrarse">
+							<label for="user">Contraseña:</label>
+							<input id="user" type="password" name="contrasenia" value="">
+							<input type="hidden" name="contraseniaVieja" value="<%= usuario.contrasenia %>">
+							<% if (locals.errors && errors.contrasenia) { %>
+								<p class="error">
+									<%= errors.contrasenia.msg %>
+								</p>
+								<% } %>
+						</div>
+						<div class="registrarse">
+							<label for="birthdate">Fecha de nacimiento:</label>
+							<input id="birthdate" type="date" name="fecha" value="<%= usuario.fecha%>" required> 
+							<% if (locals.errors && errors.fecha) { %>
+								<p class="error">
+									<%= errors.fecha.msg %>
+								</p>
+								<% } %>
+						</div>
+						<div class="registrarse">
+							<label for="doc">Documento:</label>
+							<input id="doc" type="number" name="dni" value="<%= usuario.dni%>" required>
+							<% if (locals.errors && errors.dni) { %>
+								<p class="error">
+									<%= errors.dni.msg %>
+								</p>
+								<% } %> 
+						</div>
+						<div class="registrarse">
+							<label for="picture">Foto de perfil:</label>
+							<input id="picture" type="text" name="foto" value="<%= usuario.foto%>" required>
+							<% if (locals.errors && errors.foto) { %>
+								<p class="error">
+									<%= errors.foto.msg %>
+								</p>
+								<% } %> 
+						</div>
+						<div>
+							<button class="botonesNaranja" type="submit">Enviar</button>
+						</div>
+					</form>
+				</h2>
 			</div>
-			<!-- Show the "ultimos" products ..-->
-			<h2 class="col-12">
-				<form action="/users/profile/edit/<%=usuario.id%>" method="POST">
-
-					<input type="hidden" name="id" value="<%= usuario.id %>">
-					<div class="registrarse">
-						<label for="email">Email:</label>
-						<input id="email" type="email" name="email" value="<%= usuario.email %>" required> 
-					</div>
-					<div class="registrarse">
-						<label for="user">Usuario:</label>
-						<input id="user" type="text" name="nombre" value="<%= usuario.nombre%>" required> 
-					</div>
-					<div class="registrarse">
-						<label for="user">Contraseña:</label>
-						<input id="user" type="password" name="contrasenia" value="<%= usuario.contrasenia%>" required> 
-					</div>
-					<div class="registrarse">
-						<label for="birthdate">Fecha de nacimiento:</label>
-						<input id="birthdate" type="date" name="fecha" value="<%= usuario.fecha%>" required> 
-					</div>
-					<div class="registrarse">
-						<label for="doc">Documento:</label>
-						<input id="doc" type="number" name="dni" value="<%= usuario.dni%>" required> 
-					</div>
-					<div class="registrarse">
-						<label for="picture">Foto de perfil:</label>
-						<input id="picture" type="text" name="foto" value="<%= usuario.foto%>" required> 
-					</div>
-					<div>
-						<button class="botonesNaranja" type="submit">Enviar</button>
-					</div>
-				</form>
-			</h2>
-		</div>
-	</div>
-
+		</div> 
+	<% } else  {%>
+		<p>Usted no puede editar este perfil</p>
+	
+<%}  %>
 	<%- include("./partials/footerLogueado") %>
 
 </body>
