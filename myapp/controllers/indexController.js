@@ -3,6 +3,9 @@ const db = require ("../database/models");
 const indexController = {
     index: function (req, res) {
         let filtrado = {
+            include: [
+                { association: "usuario" }, 
+            ],
             order: [
                 ["createdAt", "DESC"]
             ]

@@ -39,7 +39,7 @@ const productsController = {
                 nombreArchivoImagen: form.nombreArchivoImagen,
                 nombre: form.nombre,
                 descripcion: form.descripcion,
-                idUsuario: form.idUsuario
+                idUsuario: form.id
             }
             db.Producto.create(producto)
                 .then(function (result) {
@@ -53,7 +53,8 @@ const productsController = {
             //return res.send(errors.mapped())
             return res.render("productAdd", {
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                sesion: req.session.usuario
             })
         }
 
