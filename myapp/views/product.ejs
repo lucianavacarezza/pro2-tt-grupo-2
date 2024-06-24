@@ -44,9 +44,14 @@
 					<% }%>
 					<% if (locals.usuario != undefined) { %>
 						<form class="form" action="/products/id/<%= productos.id %>" method="POST">
-							<input type="hidden" name="idUsuario" value="<%= locals.usuario.id %>">
+							<input type="hidden" name="idUsuario" value="<%= sesion.id %>">
 							<input type="hidden" name="idProducto" value="<%= productos.id %>">
 							<input class="formInput" type="text" name= "texto" value="" placeholder="Agregar comentario">
+							<% if (locals.errors && errors.texto) { %>
+								<p class="error">
+									<%= errors.texto.msg %>
+								</p>
+								<% } %>
 							<button type="submit" class="buyNowButton">AGREGAR COMENTARIO</button>
 						</form>
 					<% } else {%>

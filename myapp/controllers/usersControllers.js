@@ -52,6 +52,12 @@ const usersController = {
 
             let passEncriptada = bcrypt.hashSync(form.contrasenia, 10)
 
+            if (form.foto == "") {
+                fotoPerfil = "defaultImage.png"
+            } else {
+                fotoPerfil = form.foto
+            }
+
             let usuario = {
                 nombre: form.nombre,
                 email: form.email,
@@ -59,9 +65,6 @@ const usersController = {
                 dni: form.dni,
                 fecha: form.fecha,
                 foto: form.foto
-            }
-            if (usuario.foto == "") {
-                usuario.foto = "defaultImage.png"
             }
 
             db.Usuario.create(usuario)

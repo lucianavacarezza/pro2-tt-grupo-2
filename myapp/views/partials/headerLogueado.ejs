@@ -27,12 +27,12 @@
 		<nav class="mainNavbar">
 			<ul class="leftNavbar">
 				<li><a class="titulosHeader logout" href="/">Todos los productos</a></li>
-				<li><a class="titulosHeader logout" href="/products/Add">Cargar productos</a></li>
+				<li><a class="titulosHeader logout" href="/products/add">Cargar productos</a></li>
 			</ul>
 
 			<ul class="rightNavbar">
-					<li><a class="titulosHeader" href="/users/profile/id/<%=usuario.id%>">
-						Hola <%= locals.usuario.nombre %> ! <i class="fas fa-user"></i>
+					<li><a class="titulosHeader" href="/users/profile/id/<%=sesion.id%>">
+						Hola <%= sesion.nombre %> ! <i class="fas fa-user"></i>
 					</a>
 				</li>
 				<li>
