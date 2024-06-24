@@ -55,18 +55,14 @@ let validacionesUpdate = [
     .notEmpty().withMessage("Completar este campo para actualizar perfil").bail()
     .isString().withMessage("Ese formato no es permitido"),
     body("contrasenia")
-    .isLength({min:4}).withMessage("La contraseña debe tener al menos 4 caracteres").bail()
-    /*.custom(function (value, {req}) {
-        if (!value || value == "") {
-            req.body.contrasenia = usuario.contrasenia
-        }
-        return true
-    }),*/,
+    .notEmpty().withMessage("Completar este campo").bail()
+    .isLength({min:4}).withMessage("La contraseña debe tener al menos 4 caracteres").bail(),
     body("foto")
     .custom(function (value, {req}) {
         if (!value || value == "") {
             req.body.foto = "defaultImage.png"
         }
+        
         return true;
     })
     .isString().withMessage("Ese formato no es permitido")

@@ -64,8 +64,9 @@ const usersController = {
                 contrasenia: passEncriptada,
                 dni: form.dni,
                 fecha: form.fecha,
-                foto: form.foto
+                foto: fotoPerfil
             }
+
 
             db.Usuario.create(usuario)
                 .then((result) => {
@@ -91,12 +92,8 @@ const usersController = {
 
         if (errors.isEmpty()) {
             let form = req.body;
-        
-        if (!form.contrasenia || form.contrasenia == "") {
-            passEncriptada = form.contraseniaVieja
-        } else {
-            passEncriptada = bcrypt.hashSync(form.contrasenia, 10)
-        }
+
+        let passEncriptada = bcrypt.hashSync(form.contrasenia, 10)
 
         let update = {
             id: form.id,
@@ -122,10 +119,11 @@ const usersController = {
                 return console.log(err);
             })
         } else {
-            //return res.send ({ sesion: req.session.usuario, erorres: errors.mapped()})
+            //return res.send ({ sesion: req.session.usuario, errores: errors.mapped()})
             return res.render("profileEdit", {
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                sesion: req.body
             })
         }
     },

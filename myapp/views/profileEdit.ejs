@@ -40,8 +40,7 @@
 						</div>
 						<div class="registrarse">
 							<label for="user">Contraseña:</label>
-							<input id="user" type="password" name="contrasenia" value="">
-							<input type="hidden" name="contraseniaVieja" value="<%= usuario.contrasenia %>">
+							<input id="user" type="password" name="contrasenia" value="<%= usuario.contrasenia %>">
 							<% if (locals.errors && errors.contrasenia) { %>
 								<p class="error">
 									<%= errors.contrasenia.msg %>

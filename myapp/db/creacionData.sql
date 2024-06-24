@@ -19,12 +19,12 @@ CREATE TABLE IF NOT EXISTS usuarios (
 
 -- Insert de data test a usuarios
 INSERT INTO usuarios (id, nombre, email, contrasenia, dni, fecha, foto, createdAt, updatedAt, deletedAt) VALUES
-(default, 'agustina_gomez_garcia', 'agustinagg@gmail.com', '123456', '46700974','1987-12-18', 'fotoDePerfil.png', default, default, default),
-(default, 'pepegomez', 'pepegomez@gmail.com', 'vacablanca', '48273847', '1969-10-12', 'fotoDePerfil.png', default, default, default),
-(default, 'lopez_nacho', 'nacholopez10@gmail.com', 'pajarorojo', '32450284', '1972-05-11', 'fotoDePerfil.png', default, default, default),
-(default, 'nicorodriguez8', 'nicorodriguez8@gmail.com', '12354', '37294380', '1967-02-11', 'fotoDePerfil.png', default, default, default),
-(default, 'luis_navas', 'luisnavas@gmail.com', 'recital450', '23928493', '1999-03-23', 'fotoDePerfil.png', default, default, default),
-(default, 'briangomez', 'briangomez@gmail.com', 'hombrearania', '21643653', '1978-04-24', 'fotoDePerfil.png', default, default, default);
+(default, 'agustina_gomez_garcia', 'agustinagg@gmail.com', '$2a$10$FO5cR716YC/Q/XyZ6UGlI.ngVr2vPLE8xNwocWX/SRyc.1CJ0EtBe', '46700974','1987-12-18', 'defaultImage.png', default, default, default), -- 123456
+(default, 'pepegomez', 'pepegomez@gmail.com', '$2a$10$kceR1CG6jmqCFef2SC70GOsG83HzD9NosiPQnoixjackoCBmUYR06', '48273847', '1969-10-12', 'defaultImage.png', default, default, default), -- vacablanca
+(default, 'lopez_nacho', 'nacholopez10@gmail.com', '$2a$10$S47RLrURwqVqaIxBj0oySOemSYZRUQNfYXG73509ZjBxOdhlebgvy', '32450284', '1972-05-11', 'defaultImage.png', default, default, default), -- pajarorojo
+(default, 'nicorodriguez8', 'nicorodriguez8@gmail.com', '$2a$10$yffMfWeuAtVyOnbXqui1Seumbeo/kA/4BxFkXvdVBJzBphXV2wwV2', '37294380', '1967-02-11', 'defaultImage.png', default, default, default), -- 12354
+(default, 'luis_navas', 'luisnavas@gmail.com', '$2a$10$ga7GOBWnp6QwGXoWoBqH0uN5OeafYayB068x5ZcPN8lATUxtTmyMy', '23928493', '1999-03-23', 'defaultImage.png', default, default, default), -- recital450
+(default, 'briangomez', 'briangomez@gmail.com', '$2a$10$XtoV9yfx6BAyajN0Kf.HFenvV0IypaZSVdfmnDG3GhgNFVpmBepna', '21643653', '1978-04-24', 'defaultImage.png', default, default, default); -- hombrearania
 
 -- Tabla de productos
 CREATE TABLE IF NOT EXISTS productos (
