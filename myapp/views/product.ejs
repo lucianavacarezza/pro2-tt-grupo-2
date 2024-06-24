@@ -62,7 +62,7 @@
 		</div>
 		<p class="productDetailDescription">
 			<% if (sesion != undefined && sesion.id == productos.usuario.id) {%>
-				<a href="/products/delete/id/<%=productos.id %>">Eliminar </a>
+				<a href="/products/delete/id/<%=productos.id %>/<%=productos.usuario.id %> ">Eliminar </a>
 			<%}%> 
 		</p>
 	</div>

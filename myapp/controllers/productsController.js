@@ -81,25 +81,35 @@ const productsController = {
 
     },
     delete: function (req, res) {
-        let form = req.body;
-        let producto = {
-            nombreArchivoImagen: form.nombreArchivoImagen,
-            nombre: form.nombre,
-            descripcion: form.descripcion,
-            idUsuario: form.idUsuario
-        }
-        db.Producto.delete(producto,
-            {where: [
-                { id: req.params.idUsuario }
-            ]
-            })
-            .then(function (result) {                
-               return res.redirect("/")
-            })
-            .catch(function (err) {
-                return console.log(err);
-            })
-            
+        let idProducto = req.params.idProducto
+        let idUsuario = req.params.idUsuario
+        if (idUsuario == req.session.usuario.id) {
+            db.Comentario.destroy({
+                where: [
+                    { id: idProducto }
+                ]
+            }
+            )
+                .then(function (comentario) {
+                    return db.Producto.destroy({
+                        where: [
+                            { id: idProducto }
+                        ]
+                    }
+                    )
+                        .then(function (producto) {
+                            return res.redirect("/")
+                        })
+                        .catch(function (err) {
+                            console.log(err);
+                        })
+                })
+                .catch(function (err) {
+                    console.log(err);
+                })
+             } else {
+            return res.redirect("/")
+                }
     },
     update: function (req, res) {
         let form = req.body;
@@ -110,17 +120,18 @@ const productsController = {
             idUsuario: form.idUsuario
         }
         db.Producto.update(producto,
-            {where: [
-                { id: form.id }
-            ]
+            {
+                where: [
+                    { id: form.id }
+                ]
             })
-            .then(function (result) {                
-               return res.redirect("/")
+            .then(function (result) {
+                return res.redirect("/")
             })
             .catch(function (err) {
                 return console.log(err);
             })
-            
+
     },
     results: function (req, res) {
         let busqueda = req.query.search;
@@ -154,14 +165,14 @@ const productsController = {
     createComentario: function (req, res) {
 
         let errors = validationResult(req)
-        
+
         let form = req.body
 
-            let comentario = {
-                idProducto: form.idProducto,
-                idUsuario: form.idUsuario,
-                texto: form.texto
-            }
+        let comentario = {
+            idProducto: form.idProducto,
+            idUsuario: form.idUsuario,
+            texto: form.texto
+        }
 
         if (errors.isEmpty()) {
 
@@ -185,20 +196,23 @@ const productsController = {
                     ["createdAt", "DESC"]
                 ]
             }
-    
+
             db.Producto.findByPk(form.idProducto, criterio)
                 .then(function (result) {
                     //return res.send({sesion : req.session.usuario})
-                    return res.render("product", { productos: result, 
+                    return res.render("product", {
+                        productos: result,
                         errors: errors.mapped(),
                         old: req.body,
-                        sesion: req.session.usuario });
+                        sesion: req.session.usuario
+                    });
                 })
                 .catch(function (err) {
                     return console.log(err);
                 })
             //return res.send(errors.mapped())
         }
-    }}
+    }
+}
 
 module.exports = productsController

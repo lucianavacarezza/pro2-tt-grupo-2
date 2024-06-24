@@ -21,6 +21,6 @@ router.post('/add', validaciones, productsController.create);
 router.get('/edit/id/:idProducto', productsController.edit);
 router.post('/edit/id/:idProducto', validaciones,  productsController.update);
 router.get ('/results', productsController.results );
-router.post('/delete/id/:idProducto', productsController.delete);
+router.get('/delete/id/:idProducto/:idUsuario', productsController.delete);
 
   module.exports = router; 
