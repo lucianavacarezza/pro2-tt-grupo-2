@@ -39,8 +39,9 @@ const productsController = {
                 nombreArchivoImagen: form.nombreArchivoImagen,
                 nombre: form.nombre,
                 descripcion: form.descripcion,
-                idUsuario: form.id
+                idUsuario: form.idUsuario
             }
+            console.log(producto);
             db.Producto.create(producto)
                 .then(function (result) {
                     //return res.send(result)
@@ -80,35 +81,46 @@ const productsController = {
 
     },
     delete: function (req, res) {
-        let deleteProduct = req.params.id;
-
-        db.Producto.delete({
-            where: [
-                { id: deleteProduct }
+        let form = req.body;
+        let producto = {
+            nombreArchivoImagen: form.nombreArchivoImagen,
+            nombre: form.nombre,
+            descripcion: form.descripcion,
+            idUsuario: form.idUsuario
+        }
+        db.Producto.delete(producto,
+            {where: [
+                { id: req.params.idUsuario }
             ]
-        })
-            .then(function (req, res) {
-                return res.redirect("/", { sesion: res.locals.usuario });
+            })
+            .then(function (result) {                
+               return res.redirect("/")
             })
             .catch(function (err) {
                 return console.log(err);
             })
-
+            
     },
     update: function (req, res) {
         let form = req.body;
         let producto = {
             nombreArchivoImagen: form.nombreArchivoImagen,
             nombre: form.nombre,
-            descripcion: form.descripcion
+            descripcion: form.descripcion,
+            idUsuario: form.idUsuario
         }
-        db.Producto.update(producto)
-            .then(function (result) {
-                return res.redirect("/", { sesion: res.locals.usuario })
+        db.Producto.update(producto,
+            {where: [
+                { id: form.id }
+            ]
+            })
+            .then(function (result) {                
+               return res.redirect("/")
             })
             .catch(function (err) {
                 return console.log(err);
             })
+            
     },
     results: function (req, res) {
         let busqueda = req.query.search;

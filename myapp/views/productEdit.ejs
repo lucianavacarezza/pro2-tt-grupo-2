@@ -17,7 +17,7 @@
 			<form action="/products/edit/id/<%=productos.id %>" method="POST">
 				<div>
 					<label for="imagenName">Imagen del producto</label>
-					<input id="imagenName" type="file" name="nombreArchivoImagen" value="<%=productos.nombreArchivoImagen%>" > </input>
+					<input id="imagenName" type="text" name="nombreArchivoImagen" value="<%=productos.nombreArchivoImagen%>" > </input>
 					<% if (locals.errors && errors.nombreArchivoImagen) { %>
 						<p class="error"> <%=errors.nombreArchivoImagen.msg%></p>
 					<% } %>
@@ -36,6 +36,10 @@
 						<p class="error"> <%=errors.descripcion.msg%></p>
 					<% } %>
 				</div>
+				<div>
+					<!-- Campo oculto para el ID del usuario -->
+					<input type="hidden" name="id" value="<%= productos.id%>">
+			   </div>
 				<div>
 					<button class="botonesNaranja" type="submit">Enviar </button>
 				</div>
