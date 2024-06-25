@@ -18,6 +18,9 @@ const usersController = {
                     include: [{ association: "comentario" }]
                 },
                 { association: "comentario" }
+            ],
+            order: [
+                ["createdAt", "DESC"]
             ]
         }
         db.Usuario.findByPk(idUsuario, criterio)

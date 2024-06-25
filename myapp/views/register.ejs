@@ -21,7 +21,7 @@
 						<form action="/users/register" method="POST">
 							<div class="registrarse">
 								<label for="email">Email:</label>
-								<input id="email" type="email" name="email" value=" <%= locals.old !== undefined && old.email ? old.email : "" %>" required>
+								<input id="email" type="email" name="email" value=" <%= locals.old !== undefined && old.email ? old.email : "" %>" >
 								<% if (locals.errors && errors.email) { %>
 									<p class="error">
 										<%= errors.email.msg %>
@@ -30,7 +30,7 @@
 							</div>
 							<div class="registrarse">
 								<label for="user">Usuario:</label>
-								<input id="nombre" type="text" name="nombre" value="<%= locals.old !== undefined && old.nombre ? old.nombre :""%>" required>
+								<input id="nombre" type="text" name="nombre" value="<%= locals.old !== undefined && old.nombre ? old.nombre :""%>" >
 								<% if (locals.errors && errors.nombre) { %>
 									<p class="error">
 										<%= errors.nombre.msg %>
@@ -39,7 +39,7 @@
 							</div>
 							<div class="registrarse">
 								<label for="user">Contraseña:</label>
-								<input id="contrasenia" type="password" name="contrasenia" value="<%= locals.old !== undefined && old.contrasenia ? old.contrasenia : "" %>" required>
+								<input id="contrasenia" type="password" name="contrasenia" value="<%= locals.old !== undefined && old.contrasenia ? old.contrasenia : "" %>" >
 								<% if (locals.errors && errors.contrasenia) { %>
 									<p class="error">
 										<%= errors.contrasenia.msg %>

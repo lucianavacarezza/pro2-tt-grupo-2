@@ -112,6 +112,8 @@ const productsController = {
                 }
     },
     update: function (req, res) {
+        let errors = validationResult(req)
+        if (errors.isEmpty()) {
         let form = req.body;
         let producto = {
             nombreArchivoImagen: form.nombreArchivoImagen,
@@ -131,6 +133,14 @@ const productsController = {
             .catch(function (err) {
                 return console.log(err);
             })
+        } else {
+            //return res.send(errors.mapped())
+            return res.render("productEdit", {
+                errors: errors.mapped(),
+                old: req.body,
+                sesion: req.session.usuario
+            })
+        }
 
     },
     results: function (req, res) {
