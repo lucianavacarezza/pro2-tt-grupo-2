@@ -7,11 +7,6 @@ const validaciones = [
   body('nombre').notEmpty().withMessage("Completar este campo").bail(),
   body('descripcion').notEmpty().withMessage("Completar este campo").bail(),
 ];
-const validacionesEditar = [
-  body('nombreArchivoImagen').notEmpty().withMessage("Completar este campo").bail(),
-  body('nombre').notEmpty().withMessage("Completar este campo").bail(),
-  body('descripcion').notEmpty().withMessage("Completar este campo").bail(),
-];
 let validacionesComentario = [
   body("texto")
   .notEmpty().withMessage("El comentario no puede enviarse vacío").bail()
@@ -23,7 +18,7 @@ router.post('/id/:idProducto', validacionesComentario, productsController.create
 router.get('/add', productsController.add ); //  se va a relacionar con productAdd.ejs 
 router.post('/add', validaciones, productsController.create);
 router.get('/edit/id/:idProducto', productsController.edit);
-router.post('/edit/id/:idProducto', validacionesEditar,  productsController.update);
+router.post('/edit/id/:idProducto', validaciones,  productsController.update);
 router.get ('/results', productsController.results );
 router.get('/delete/id/:idProducto/:idUsuario', productsController.delete);
 

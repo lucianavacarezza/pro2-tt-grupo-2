@@ -141,7 +141,6 @@ const productsController = {
                 sesion: req.session.usuario
             })
         }
-
     },
     results: function (req, res) {
         let busqueda = req.query.search;
@@ -194,16 +193,20 @@ const productsController = {
                     return console.log(err);
                 })
         } else {
-
-            db.Producto.findByPk(form.idProducto, {
+            let criterio = {
                 include: [
-                { association: "usuario" },
-                {
-                    association: "comentario",
-                    separate: true,
-                    order: [["createdAt", "DESC"]]
-                }
-            ]}) 
+                    { association: "usuario" },
+                    {
+                        association: "comentario",
+                        include: [{ association: "usuario" }]
+                    }
+                ],
+                order: [
+                    ["createdAt", "DESC"]
+                ]
+            }
+
+            db.Producto.findByPk(form.idProducto, criterio)
                 .then(function (result) {
                     //return res.send({sesion : req.session.usuario})
                     return res.render("product", {
