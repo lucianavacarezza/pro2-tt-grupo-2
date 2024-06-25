@@ -194,20 +194,16 @@ const productsController = {
                     return console.log(err);
                 })
         } else {
-            let criterio = {
-                include: [
-                    { association: "usuario" },
-                    {
-                        association: "comentario",
-                        include: [{ association: "usuario" }]
-                    }
-                ],
-                order: [
-                    ["createdAt", "DESC"]
-                ]
-            }
 
-            db.Producto.findByPk(form.idProducto, criterio)
+            db.Producto.findByPk(form.idProducto, {
+                include: [
+                { association: "usuario" },
+                {
+                    association: "comentario",
+                    separate: true,
+                    order: [["createdAt", "DESC"]]
+                }
+            ]}) 
                 .then(function (result) {
                     //return res.send({sesion : req.session.usuario})
                     return res.render("product", {
